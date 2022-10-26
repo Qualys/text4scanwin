@@ -5,7 +5,7 @@ https://github.com/Qualys/text4scanwin/releases/download/1.0.0/Text4Scan.zip
 
 # Text4Scanner
 ## Description
-The Text4Scan.exe utility helps to detect CVE-2022-22963 vulnerability.
+The Text4Scan.exe utility helps to detect CVE-2022-42889 vulnerability.
 The utility will scan the entire hard drive(s) including archives (and nested JARs) for the Java libraries that indicates the Java application contains a vulnerable Apache Commons Text library. The utility will output its results to a console.
 
 QID descriptions can be found here:
