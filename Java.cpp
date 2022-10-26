@@ -106,6 +106,7 @@ int32_t ProcessJavaFileJAR(CScannerOptions& options, std::wstring file, std::wst
   std::wstring              tmpFilename;
   bool                      foundManifest = false;
   bool                      foundProperties = false;
+  bool                      foundApacheCommonsText = false;
   std::string               manifest;
   std::string               properties;
   CJavaManifest             javaManifest;
@@ -152,8 +153,8 @@ int32_t ProcessJavaFileJAR(CScannerOptions& options, std::wstring file, std::wst
     ParseJavaProperties(properties, javaProperties);
   }
 
-
   if (javaManifest.title == "Apache Commons Text") {
+    foundApacheCommonsText = true;
     if (IsCVE202242889Mitigated(javaManifest)) {
       cve202242889Mitigated = true;
       cveStatus = "Mitigated";
@@ -172,6 +173,7 @@ int32_t ProcessJavaFileJAR(CScannerOptions& options, std::wstring file, std::wst
       );
     }
   } else if ((javaProperties.artifactId == "commons-text") && (javaProperties.groupId == "org.apache.commons")) {
+    foundApacheCommonsText = true;
     if (IsCVE202242889Mitigated(javaProperties)) {
       cve202242889Mitigated = true;
       cveStatus = "Mitigated";
@@ -180,10 +182,6 @@ int32_t ProcessJavaFileJAR(CScannerOptions& options, std::wstring file, std::wst
       cveStatus = "Potentially Vulnerable ( CVE-2022-202242889: Found )";
     }
 
-    repVulns.push_back(CReportVulnerabilities(
-        file, A2W(javaManifest.title), A2W(javaManifest.vendor), A2W(javaManifest.version), A2W(cveStatus), cve202242889Mitigated, A2W(javaProperties.version)
-    ));
-
     if (options.console) {
       wprintf(L"Apache Commons Text Found: '%s' ( Manifest Title: %S, Manifest Vendor: %S, Manifest Version: %S, CVE Status: %S )\n",
               file.c_str(), javaManifest.title.c_str(), javaManifest.vendor.c_str(), javaManifest.version.c_str(), cveStatus.c_str()
@@ -191,5 +189,10 @@ int32_t ProcessJavaFileJAR(CScannerOptions& options, std::wstring file, std::wst
     }
   }
 
+  if (foundApacheCommonsText) {
+    repVulns.push_back(CReportVulnerabilities(
+        file, A2W(javaManifest.title), A2W(javaManifest.vendor), A2W(javaManifest.version), A2W(cveStatus), cve202242889Mitigated, A2W(javaProperties.version)
+    ));
+  }
   return rv;
 }
