@@ -1,20 +1,18 @@
 THIS SCRIPT IS PROVIDED TO YOU "AS IS." TO THE EXTENT PERMITTED BY LAW, QUALYS HEREBY DISCLAIMS ALL WARRANTIES AND LIABILITY FOR THE PROVISION OR USE OF THIS SCRIPT. IN NO EVENT SHALL THESE SCRIPTS BE DEEMED TO BE CLOUD SERVICES AS PROVIDED BY QUALYS
 
 # Direct Download Links
-https://github.com/Qualys/spring4scanwin/releases/download/1.0.2/Spring4Scan.zip
+https://github.com/Qualys/text4scanwin/releases/download/1.0.0/Text4Scan.zip
 
-# Spring4Scanner
+# Text4Scanner
 ## Description
-The Spring4Scan.exe utility helps to detect CVE-2022-22963, and CVE-2022-22965 vulnerabilities.
-The utility will scan the entire hard drive(s) including archives (and nested JARs) for the Java libraries that indicates the Java application contains a vulnerable spring framework or spring cloud library. The utility will output its results to a console.
-
-**NOTE:** Preconditions related to JDK and Tomcat are environmental factors and are not covered by this utility.
+The Text4Scan.exe utility helps to detect CVE-2022-22963 vulnerability.
+The utility will scan the entire hard drive(s) including archives (and nested JARs) for the Java libraries that indicates the Java application contains a vulnerable Apache Commons Text library. The utility will output its results to a console.
 
 QID descriptions can be found here:
-https://blog.qualys.com/vulnerabilities-threat-research/2022/03/31/spring-framework-zero-day-remote-code-execution-spring4shell-vulnerability
+https://blog.qualys.com/vulnerabilities-threat-research/2022/10/25/cve-2022-44889-detect-text4shell
 
 Qualys customers should use the following to run the tool on any asset they want to scan, from an elevated command prompt:
-> Spring4Scan.exe /scan /report_sig
+> Text4Scan.exe /scan /report_sig
 
 ## Usage
 ```
@@ -52,41 +50,39 @@ Qualys customers should use the following to run the tool on any asset they want
 ```
 
 Sample Usage (from an elevated command prompt) - The following command helps you scan local drives for vulnerable JAR, WAR, EAR, and ZIP.
-> Spring4Scan.exe /scan
+> Text4Scan.exe /scan
 
 Sample Usage (from an elevated command prompt) - The following command helps you scan local drives for vulnerable files and writes a signature report to C:\ProgramData\Qualys
-> Spring4Scan.exe /scan /report_sig
+> Text4Scan.exe /scan /report_sig
 
 ## Output - The following output shows the detection
 ```
-D:\Temp>Spring4Scan.exe /scan_directory d:\spring4shell
-Qualys Spring-Boot Vulnerability Scanner 1.0.0.0
+C:\Temp>Text4Scan.exe /scan_directory C:\Text4Shell
+Qualys Text4Shell Vulnerability Scanner 1.0.0.0
 https://www.qualys.com/
-Dependencies: minizip/1.1 zlib/1.2.11, bzip2/1.0.8, rapidjson/1.1.0
-Supported CVE(s): CVE-2022-22963, CVE-2022-22965
+Dependencies: minizip/1.1, zlib/1.2.11, bzip2/1.0.8, rapidjson/1.1.0
+Supported CVE(s): 2022-42889
 
 Known TAR Extensions            : .tar
 Known GZIP TAR Extensions       : .tgz, .tar.gz
 Known BZIP TAR Extensions       : .tbz, .tbz2, .tar.bz, .tar.bz2
 Known ZIP Extensions            : .zip, .jar, .war, .ear, .par, .kar, .sar, .rar, .jpi, .hpi, .apk
 
-Scanning 'd:\spring4shell\'...
-Spring-Framework Found: 'd:\spring4shell\demo-0.0.1-SNAPSHOT.war' ( Manifest Title: demo, Manifest Vendor: Unknown, Manifest Version: 0.0.1-SNAPSHOT, CVE Status: Mitigated )
-Spring Cloud Found: 'd:\spring4shell\demo-cloud-0.0.1-SNAPSHOT.war!WEB-INF/lib/spring-cloud-function-core-3.2.2.jar' ( Manifest Title: Spring Cloud Function Core, Manifest Vendor: Pivotal Software, Inc., Manifest Version: 3.2.2, CVE Status: Potentially Vulnerable ( CVE-2022-22963: Found ) )
-Spring-Framework Found: 'd:\spring4shell\demo-cloud-0.0.1-SNAPSHOT.war' ( Manifest Title: demo-cloud, Manifest Vendor: Unknown, Manifest Version: 0.0.1-SNAPSHOT, CVE Status: Mitigated )
-Spring Cloud Found: 'd:\spring4shell\spring-cloud-function-core-3.2.2.jar' ( Manifest Title: Spring Cloud Function Core, Manifest Vendor: Pivotal Software, Inc., Manifest Version: 3.2.2, CVE Status: Potentially Vulnerable ( CVE-2022-22963: Found ) )
+Scanning 'C:\Text4Shell\'...
+Apache Commons Text Found: 'C:\Data\Text4Shell\commons-text-1.9.jar' ( Manifest Title: Apache Commons Text, Manifest Vendor: The Apache Software Foundation, Manifest Version: 1.9, CVE Status: Potentially Vulnerable ( CVE-2022-42889: Found ) )
+Apache Commons Text Found: 'C:\Data\Text4Shell\untitled.jar' ( Manifest Title: Unknown, Manifest Vendor: Unknown, Manifest Version: Unknown, CVE Status: Potentially Vulnerable ( CVE-2022-42889: Found ) )
 
 Scan Summary:
-        Scan Date:                       2022-04-03T15:02:58-0700
-        Scan Duration:                   28 Seconds
+        Scan Date:                       2022-10-26T12:05:41-0700
+        Scan Duration:                   1 Seconds
         Scan Error Count:                0
         Scan Status:                     Success
-        Files Scanned:                   5
+        Files Scanned:                   3
         Directories Scanned:             0
-        Compressed File(s) Scanned:      348
-        JAR(s) Scanned:                  341
-        WAR(s) Scanned:                  3
+        Compressed File(s) Scanned:      2
+        JAR(s) Scanned:                  2
+        WAR(s) Scanned:                  0
         EAR(s) Scanned:                  0
         TAR(s) Scanned:                  0
-        Vulnerabilities Found:           3
+        Vulnerabilities Found:           2
 ```

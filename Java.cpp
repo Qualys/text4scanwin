@@ -160,7 +160,7 @@ int32_t ProcessJavaFileJAR(CScannerOptions& options, std::wstring file, std::wst
       cveStatus = "Mitigated";
     } else {
       repSummary.foundVunerabilities++;
-      cveStatus = "Potentially Vulnerable ( CVE-2022-202242889: Found )";
+      cveStatus = "Potentially Vulnerable ( CVE-2022-42889: Found )";
     }
 
     repVulns.push_back(CReportVulnerabilities(
@@ -179,7 +179,7 @@ int32_t ProcessJavaFileJAR(CScannerOptions& options, std::wstring file, std::wst
       cveStatus = "Mitigated";
     } else {
       repSummary.foundVunerabilities++;
-      cveStatus = "Potentially Vulnerable ( CVE-2022-202242889: Found )";
+      cveStatus = "Potentially Vulnerable ( CVE-2022-42889: Found )";
     }
 
     if (options.console) {
