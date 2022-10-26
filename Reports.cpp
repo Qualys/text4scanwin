@@ -165,6 +165,7 @@ int32_t GenerateReportDetail(DocumentW& doc) {
     ValueW vManifestVersion(rapidjson::kStringType);
     ValueW vCVE202242889Mitigated(rapidjson::kTrueType);
     ValueW vCVEStatus(rapidjson::kStringType);
+    ValueW vApacheCommonsTextVersion(rapidjson::kStringType);
     ValueW oDetail(rapidjson::kObjectType);
 
     vFile.SetString(vuln.file.c_str(), doc.GetAllocator());
@@ -173,6 +174,7 @@ int32_t GenerateReportDetail(DocumentW& doc) {
     vManifestVersion.SetString(vuln.manifestVersion.c_str(), doc.GetAllocator());
     vCVE202242889Mitigated.SetBool(vuln.cve202242889Mitigated);
     vCVEStatus.SetString(vuln.cveStatus.c_str(), doc.GetAllocator());
+    vApacheCommonsTextVersion.SetString(vuln.apacheCommonsTextVersion.c_str(), doc.GetAllocator());
 
     oDetail.AddMember(L"file", vFile, doc.GetAllocator());
     oDetail.AddMember(L"manifestTitle", vManifestTitle, doc.GetAllocator());
@@ -180,6 +182,7 @@ int32_t GenerateReportDetail(DocumentW& doc) {
     oDetail.AddMember(L"manifestVersion", vManifestVersion, doc.GetAllocator());
     oDetail.AddMember(L"cve202242889Mitigated", vCVE202242889Mitigated, doc.GetAllocator());
     oDetail.AddMember(L"cveStatus", vCVEStatus, doc.GetAllocator());
+    oDetail.AddMember(L"apacheCommonsTextVersion", vApacheCommonsTextVersion, doc.GetAllocator());
 
     oDetails.PushBack(oDetail, doc.GetAllocator());
   }

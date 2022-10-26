@@ -64,6 +64,7 @@ class CReportVulnerabilities {
     this->manifestVersion = manifestVersion;
     this->cveStatus = cveStatus;
     this->cve202242889Mitigated = cve202242889Mitigated;
+    this->apacheCommonsTextVersion = apacheCommonsTextVersion;
   }
 };
 
