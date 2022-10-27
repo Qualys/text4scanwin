@@ -9,7 +9,7 @@ The Text4Scan.exe utility helps to detect CVE-2022-42889 vulnerability.
 The utility will scan the entire hard drive(s) including archives (and nested JARs) for the Java libraries that indicates the Java application contains a vulnerable Apache Commons Text library. The utility will output its results to a console.
 
 QID descriptions can be found here:
-https://blog.qualys.com/vulnerabilities-threat-research/2022/10/25/cve-2022-44889-detect-text4shell
+https://blog.qualys.com/vulnerabilities-threat-research/2022/10/27/text4shell-detect-prioritize-and-remediate-the-risk-across-on-premise-cloud-container-environment-using-qualys-platform
 
 Qualys customers should use the following to run the tool on any asset they want to scan, from an elevated command prompt:
 > Text4Scan.exe /scan /report_sig
